@@ -10,7 +10,8 @@ export function makeExportCommand(): Command {
   cmd
     .option('--run-id <uuid>', 'Chỉ xuất dữ liệu của một run_id cụ thể (hoặc "latest")')
     .option('--stone <slug>', 'Lọc theo slug đá')
-    .option('--output <path>', 'Đường dẫn file xuất ra (.ndjson hoặc .json)')
+    .option('-p, --to-processing', 'Tự động xuất trực tiếp sang ../gem-data-processing/incoming/ theo chuẩn ADR-0001')
+    .option('--output <path>', 'Đường dẫn file xuất ra tùy chọn (.ndjson hoặc .json)')
     .action(async (opts) => {
       const db = new CrawlerDatabase();
 
@@ -40,9 +41,17 @@ export function makeExportCommand(): Command {
         await fs.mkdir(exportDir, { recursive: true });
 
         const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-        const outputPath = opts.output
-          ? path.resolve(process.cwd(), opts.output)
-          : path.join(exportDir, `raw_export_${dateStr}_${runId ? runId.slice(0, 8) : 'all'}.ndjson`);
+        const runSuffix = runId ? runId.slice(0, 8) : 'all';
+        let outputPath: string;
+
+        if (opts.toProcessing) {
+          const processingIncomingDir = path.resolve(process.cwd(), '..', 'gem-data-processing', 'incoming');
+          outputPath = path.join(processingIncomingDir, `raw_documents_${dateStr}_${runSuffix}.ndjson`);
+        } else if (opts.output) {
+          outputPath = path.resolve(process.cwd(), opts.output);
+        } else {
+          outputPath = path.join(exportDir, `raw_export_${dateStr}_${runSuffix}.ndjson`);
+        }
 
         await fs.mkdir(path.dirname(outputPath), { recursive: true });
         const ndjsonLines = docs.map((d) => JSON.stringify(d)).join('\n') + '\n';
