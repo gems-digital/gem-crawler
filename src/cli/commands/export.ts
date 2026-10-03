@@ -44,6 +44,7 @@ export function makeExportCommand(): Command {
           ? path.resolve(process.cwd(), opts.output)
           : path.join(exportDir, `raw_export_${dateStr}_${runId ? runId.slice(0, 8) : 'all'}.ndjson`);
 
+        await fs.mkdir(path.dirname(outputPath), { recursive: true });
         const ndjsonLines = docs.map((d) => JSON.stringify(d)).join('\n') + '\n';
         await fs.writeFile(outputPath, ndjsonLines, 'utf8');
 
