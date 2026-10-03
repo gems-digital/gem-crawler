@@ -3,6 +3,5 @@ dist/
 data/
 exports/
 .DS_Store
-storage/
+/storage/
 logs/
-.agents/.agents/
