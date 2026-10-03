@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omnigem.org/schemas/v1/raw-document.schema.json",
+  "title": "RawDocument",
+  "description": "Bản hợp đồng dữ liệu chuẩn đầu ra của gem-crawler bàn giao cho gem-data-processing theo kiến trúc HLD OmniGem (Trang 2 & Trang 5)",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "run_id",
+    "target_stone",
+    "source_tier",
+    "original_url",
+    "canonical_url",
+    "crawl_timestamp",
+    "http_status",
+    "content_hash",
+    "raw_html_path",
+    "cleaned_text",
+    "page_title"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "Phiên bản schema của bản hợp đồng dữ liệu RawDocument"
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Định danh UUID duy nhất của tài liệu RawDocument này"
+    },
+    "run_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Định danh UUID của phiên chạy batch crawl CLI"
+    },
+    "target_stone": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "Mã slug chuẩn hóa của loại đá mục tiêu cần thu thập (vd: thach-anh-hong, ngoc-bich, aquamarine)"
+    },
+    "source_tier": {
+      "type": "integer",
+      "enum": [1, 2, 3],
+      "description": "Tầng tin cậy của nguồn: 1 (Khoa học: Wikipedia, Mindat, viện kiểm định), 2 (Phong thủy tiếng Việt uy tín), 3 (Hỏi đáp cộng đồng)"
+    },
+    "original_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL ban đầu được đưa vào danh sách crawl"
+    },
+    "canonical_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL chuẩn cuối cùng sau khi đã resolve redirect hoặc đọc từ thẻ link rel=canonical"
+    },
+    "crawl_timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Thời điểm crawl thành công theo chuẩn ISO 8601 UTC"
+    },
+    "http_status": {
+      "type": "integer",
+      "minimum": 200,
+      "maximum": 599,
+      "description": "Mã trạng thái HTTP của response (200, 304, etc.)"
+    },
+    "response_headers": {
+      "type": "object",
+      "description": "Các header HTTP quan trọng phục vụ cache và freshness",
+      "properties": {
+        "etag": { "type": "string" },
+        "last-modified": { "type": "string" },
+        "content-type": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "page_title": {
+      "type": "string",
+      "description": "Tiêu đề trang trích xuất từ thẻ <title> hoặc og:title"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "Mã băm SHA-256 (64 ký tự hex) tính trên nội dung văn bản đã làm sạch và chuẩn hóa"
+    },
+    "raw_html_path": {
+      "type": "string",
+      "description": "Đường dẫn tương đối trỏ tới file snapshot HTML nén (.html.gz) trên ổ đĩa local"
+    },
+    "raw_html_size_bytes": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Dung lượng tính theo byte của file HTML thô trước khi nén"
+    },
+    "compressed_size_bytes": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Dung lượng tính theo byte của file snapshot nén trên disk (.html.gz)"
+    },
+    "cleaned_text": {
+      "type": "string",
+      "description": "Nội dung văn bản thuần (plain text) đã bóc tách rác, header, footer, quảng cáo"
+    },
+    "cleaned_markdown": {
+      "type": "string",
+      "description": "Nội dung văn bản định dạng Markdown có cấu trúc (tiêu đề, bảng thuộc tính, danh sách) phục vụ LLM ở P2"
+    },
+    "extractor_metadata": {
+      "type": "object",
+      "description": "Thông số kỹ thuật của bộ trích xuất dữ liệu",
+      "properties": {
+        "engine": {
+          "type": "string",
+          "enum": ["cheerio", "playwright"]
+        },
+        "strategy": {
+          "type": "string",
+          "enum": ["readability-linkedom", "domain-selector", "fallback"]
+        },
+        "word_count": { "type": "integer", "minimum": 0 },
+        "character_count": { "type": "integer", "minimum": 0 },
+        "language_detected": { "type": "string" },
+        "execution_duration_ms": { "type": "integer", "minimum": 0 }
+      },
+      "required": ["engine", "strategy", "word_count"],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

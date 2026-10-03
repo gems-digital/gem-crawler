@@ -1,0 +1,70 @@
+[
+  {
+    "slug": "thach-anh-hong",
+    "primary_name": "Thạch anh hồng",
+    "aliases": ["Rose Quartz", "Đá hồng", "Thạch anh phấn"],
+    "in_stock": true,
+    "priority": 1,
+    "search_keywords": [
+      "thạch anh hồng",
+      "rose quartz",
+      "thạch anh hồng hợp mệnh gì",
+      "phân biệt thạch anh hồng thật giả",
+      "độ cứng thạch anh hồng"
+    ]
+  },
+  {
+    "slug": "ngoc-bich",
+    "primary_name": "Ngọc bích",
+    "aliases": ["Nephrite Jade", "Ngọc Nephrite", "Ngọc cẩm thạch xanh lục đậm"],
+    "in_stock": true,
+    "priority": 1,
+    "search_keywords": [
+      "ngọc bích",
+      "nephrite jade",
+      "ngọc bích hợp mệnh gì",
+      "cách nhận biết ngọc bích thật",
+      "ý nghĩa phong thủy ngọc bích"
+    ]
+  },
+  {
+    "slug": "ngoc-phi-thuy",
+    "primary_name": "Ngọc phỉ thúy",
+    "aliases": ["Jadeite Jade", "Cẩm thạch phỉ thúy", "Ngọc Miến Điện"],
+    "in_stock": true,
+    "priority": 1,
+    "search_keywords": [
+      "ngọc phỉ thúy",
+      "jadeite jade",
+      "phân loại ngọc phỉ thúy loại A B C",
+      "ngọc phỉ thúy hợp mệnh gì"
+    ]
+  },
+  {
+    "slug": "aquamarine",
+    "primary_name": "Aquamarine",
+    "aliases": ["Ngọc xanh biển", "Đá ngọc hải lam", "Beryl xanh"],
+    "in_stock": false,
+    "priority": 2,
+    "search_keywords": [
+      "aquamarine",
+      "đá aquamarine",
+      "đá ngọc hải lam",
+      "aquamarine hợp mệnh gì",
+      "độ cứng đá aquamarine"
+    ]
+  },
+  {
+    "slug": "thach-anh-toc-vang",
+    "primary_name": "Thạch anh tóc vàng",
+    "aliases": ["Golden Rutilated Quartz", "Thạch anh rutil"],
+    "in_stock": true,
+    "priority": 1,
+    "search_keywords": [
+      "thạch anh tóc vàng",
+      "golden rutilated quartz",
+      "thạch anh tóc vàng hợp mệnh gì",
+      "phân biệt thạch anh tóc vàng giả"
+    ]
+  }
+]

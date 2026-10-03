@@ -1,0 +1,8 @@
+node_modules/
+dist/
+data/
+exports/
+.DS_Store
+storage/
+logs/
+.agents/.agents/

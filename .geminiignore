@@ -1,0 +1,42 @@
+# Antigravity Agent Ignore File (.geminiignore)
+# Excludes raw datasets, binary archives, and build artifacts from Agent context window
+
+# SQLite Database & Write-Ahead Logs
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/*.sqlite
+data/*.sqlite-wal
+
+# Raw Snapshot Archives (Thousands of compressed Gzip HTML files)
+data/snapshots/
+data/snapshots/**
+
+# Exports (Large NDJSON / JSON dumps for gem-data-processing)
+exports/
+exports/**
+
+# Crawlee internal storage state & queues
+storage/
+storage/**
+crawlee_storage/
+crawlee_storage/**
+
+# Compiled JavaScript & Package Bundles
+dist/
+dist/**
+node_modules/
+node_modules/**
+
+# Logs & Audit trails
+logs/
+*.log
+.agents/audit.log
+
+# Large Binary Documentation Assets
+High-Level Design.pdf
+
+# OS artifacts & Temp
+.DS_Store
+*.tmp
+.turbo/

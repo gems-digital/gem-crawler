@@ -1,0 +1,104 @@
+[
+  {
+    "id": "wiki-vi",
+    "name": "Wikipedia Tiếng Việt",
+    "domain": "vi.wikipedia.org",
+    "tier": 1,
+    "category": "scientific",
+    "engine": "cheerio",
+    "rate_limit_delay_ms": 2000,
+    "ttl_days": 60,
+    "selectors": {
+      "article": "#mw-content-text .mw-parser-output",
+      "remove": [".navbox", "#toc", ".reference", ".reflist", ".hatnote", ".gallery", ".thumb"]
+    },
+    "search_template": "https://vi.wikipedia.org/wiki/{keyword}"
+  },
+  {
+    "id": "wiki-en",
+    "name": "Wikipedia English",
+    "domain": "en.wikipedia.org",
+    "tier": 1,
+    "category": "scientific",
+    "engine": "cheerio",
+    "rate_limit_delay_ms": 2000,
+    "ttl_days": 60,
+    "selectors": {
+      "article": "#mw-content-text .mw-parser-output",
+      "remove": [".navbox", "#toc", ".reference", ".reflist", ".hatnote", ".gallery", ".thumb"]
+    },
+    "search_template": "https://en.wikipedia.org/wiki/{keyword}"
+  },
+  {
+    "id": "mindat",
+    "name": "Mindat Mineral Database",
+    "domain": "mindat.org",
+    "tier": 1,
+    "category": "scientific",
+    "engine": "playwright",
+    "rate_limit_delay_ms": 3000,
+    "ttl_days": 90,
+    "selectors": {
+      "article": "#mindatdata",
+      "remove": [".headerads", ".footer", "script", "style"]
+    },
+    "search_template": "https://www.mindat.org/search.php?search={keyword}"
+  },
+  {
+    "id": "gia-edu",
+    "name": "Gemological Institute of America (GIA) Gem Encyclopedia",
+    "domain": "gia.edu",
+    "tier": 1,
+    "category": "scientific",
+    "engine": "playwright",
+    "rate_limit_delay_ms": 3000,
+    "ttl_days": 90,
+    "selectors": {
+      "article": ".gem-encyclopedia-article, .main-content",
+      "remove": ["header", "footer", ".ad-container", "nav"]
+    },
+    "search_template": "https://www.gia.edu/search?q={keyword}"
+  },
+  {
+    "id": "phong-thuy-an-phat",
+    "name": "Phong Thủy An Phát (Kiến thức phong thủy)",
+    "domain": "phongthuyanphat.com",
+    "tier": 2,
+    "category": "vietnamese-feng-shui",
+    "engine": "cheerio",
+    "rate_limit_delay_ms": 1500,
+    "ttl_days": 30,
+    "selectors": {
+      "article": ".entry-content, article.post",
+      "remove": [".related-posts", ".share-buttons", ".comments-area", "header", "footer"]
+    }
+  },
+  {
+    "id": "da-quy-viet-nam",
+    "name": "Đá Quý Việt Nam Blog",
+    "domain": "daquyvietnam.info",
+    "tier": 2,
+    "category": "vietnamese-feng-shui",
+    "engine": "cheerio",
+    "rate_limit_delay_ms": 1500,
+    "ttl_days": 30,
+    "selectors": {
+      "article": ".post-content, #content",
+      "remove": [".sidebar", ".widget", ".post-footer"]
+    }
+  },
+  {
+    "id": "webtretho-hoi-dap",
+    "name": "Webtretho - Góc tư vấn đá phong thủy",
+    "domain": "webtretho.com",
+    "tier": 3,
+    "category": "qa-forum",
+    "engine": "cheerio",
+    "rate_limit_delay_ms": 2500,
+    "ttl_days": 14,
+    "selectors": {
+      "article": ".thread-content, .post-item",
+      "remove": [".ad-wrapper", ".banner", ".author-signature"]
+    }
+  }
+]
