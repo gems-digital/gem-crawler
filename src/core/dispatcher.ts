@@ -64,8 +64,14 @@ export class CrawlDispatcher {
         }
       }
 
-      // Determine engine
-      const preferred = enginePreference || job.source.engine || 'auto';
+      // Determine engine:
+      // If user explicitly specified 'cheerio' or 'playwright', force it.
+      // Otherwise ('auto' or undefined), use the source's configured engine.
+      const preferred =
+        enginePreference && enginePreference !== 'auto'
+          ? enginePreference
+          : job.source.engine || 'cheerio';
+
       if (preferred === 'playwright') {
         playwrightJobs.push(job);
       } else {
