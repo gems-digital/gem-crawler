@@ -351,4 +351,5 @@ gem-crawler/
 ## 📚 TÀI LIỆU LIÊN QUAN
 - [Tài liệu Kiến trúc Cấp cao OmniGem](file:///Users/leonard/Workspace/projects/omni-gems/gem-crawler/High-Level%20Design.pdf)
 - [Đặc tả Kỹ thuật Chi tiết Crawler Tools](file:///Users/leonard/Workspace/projects/omni-gems/gem-crawler/docs/CRAWLER_TOOLS_SPECIFICATION.md)
+- [ADR 0001: Chiến lược Bàn giao Dữ liệu (Handover Strategy)](file:///Users/leonard/Workspace/projects/omni-gems/gem-crawler/docs/adr/0001-crawler-data-processing-handover-strategy.md)
 - [Hợp đồng Dữ liệu RawDocument Schema](file:///Users/leonard/Workspace/projects/omni-gems/gem-crawler/schemas/raw-document.schema.json)
